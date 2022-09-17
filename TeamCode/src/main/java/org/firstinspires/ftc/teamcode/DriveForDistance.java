@@ -29,14 +29,12 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
 
+//moo
 
 /**
  * This file contains an minimal example of a Linear "OpMode". An OpMode is a 'program' that runs in either
@@ -51,8 +49,8 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="First Drive TeleOp", group="Linear Opmode")
-public class FirstDriveTeleop extends LinearOpMode {
+@TeleOp(name="Drive For Time :)", group="Linear Opmode")
+public class DriveForDistance extends LinearOpMode {
     DcMotor motor01;
     DcMotor motor02;
     DcMotor motor03;
@@ -68,26 +66,42 @@ public class FirstDriveTeleop extends LinearOpMode {
         motor03.setDirection(DcMotorSimple.Direction.REVERSE);
         waitForStart();
 
+        motor01.setPower(1);
+        motor02.setPower(1);
+        motor03.setPower(1);
+        motor04.setPower(1);
+        sleep(2000);
+        motor01.setPower(-1);
+        motor02.setPower(-1);
+        motor03.setPower(-1);
+        motor04.setPower(-1);
+        sleep(2000);
+        sleep(1000);
+        motor01.setPower(0.5);
+        motor02.setPower(0.5);
+        motor03.setPower(0.5);
+        motor04.setPower(0.5);
+        sleep(2000);
+        sleep(1000);
+
+        motor01.setPower(0);
+        motor02.setPower(-1);
+        motor03.setPower(-1);
+        motor04.setPower(0);
+        sleep(2000);
+        motor01.setPower(-1);
+        motor02.setPower(0);
+        motor03.setPower(0);
+        motor04.setPower(-1);
+        sleep(2000);
+        motor01.setPower(0);
+        motor02.setPower(0);
+        motor03.setPower(0);
+        motor04.setPower(0);
+
+
         while (opModeIsActive()) {
-            float lefty = -gamepad1.left_stick_y;
-            motor01.setPower(lefty);
-            motor02.setPower(lefty);
-            motor03.setPower(lefty);
-            motor04.setPower(lefty);
-            telemetry.addLine("Motor Power Left Y: " + lefty);
-            float leftx = gamepad1.left_stick_x;
-            motor01.setPower(-leftx);
-            motor02.setPower(leftx);
-            motor03.setPower(leftx);
-            motor04.setPower(-leftx);
-            telemetry.addLine("Motor Power Left X: " + leftx);
-            float rightx = gamepad1.right_stick_x;
-            motor01.setPower(rightx);
-            motor02.setPower(-rightx);
-            motor03.setPower(rightx);
-            motor04.setPower(-rightx);
-            telemetry.addLine("Motor Power Right X: " + rightx);
-            telemetry.update();
+
         }
     }
 }
